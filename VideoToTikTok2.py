@@ -1,5 +1,6 @@
 from moviepy.editor import VideoFileClip
 import os 
+import config
 
 def crop_to_tiktok_format(input_path, output_path):
     # Charger la vidéo
@@ -37,8 +38,11 @@ def crop_to_tiktok_format(input_path, output_path):
     final_clip.write_videofile(output_path, codec="libx264", fps=clip.fps)
 
 # Exemple d'utilisation
-current_dir = os.path.dirname(os.path.abspath(__file__))
-input_video_path = os.path.join(current_dir, 'tmp', 'video1.mp4')
-output_video_path = os.path.join(current_dir, 'tmp', 'video1_to_tiktok2.mp4')
+if __name__ == '__main__':
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    input_video_path = os.path.join(current_dir, config.INPUT_VIDEO_DIRECTORY, 'video1.mp4')
+    output_video_path = os.path.join(current_dir, config.OUTPUT_VIDEO_DIRECTORY, 'video1_to_tiktok.mp4')
 
-crop_to_tiktok_format(input_video_path, output_video_path)
+    crop_to_tiktok_format(input_video_path, output_video_path)
+
+

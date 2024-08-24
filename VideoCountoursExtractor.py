@@ -2,6 +2,7 @@ import cv2
 import numpy as np 
 from moviepy.editor import VideoFileClip
 import os
+import config
 
 def process_frame(frame):
     # Convertir en niveaux de gris
@@ -24,8 +25,9 @@ def process_video(input_path, output_path):
     processed_clip.write_videofile(output_path, codec='libx264')
 
 # Exemple d'utilisation
-current_dir = os.path.dirname(os.path.abspath(__file__))
-input_video_path = os.path.join(current_dir, 'tmp', 'video1.mp4')
-output_video_path = os.path.join(current_dir, 'tmp', 'video1_out.mp4')
+if __name__ == '__main__':
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    input_video_path = os.path.join(current_dir, config.INPUT_VIDEO_DIRECTORY, 'video1.mp4')
+    output_video_path = os.path.join(current_dir, config.OUTPUT_VIDEO_DIRECTORY, 'video1_out.mp4')
 
-process_video(input_video_path, output_video_path)
+    process_video(input_video_path, output_video_path)

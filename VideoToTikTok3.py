@@ -1,4 +1,5 @@
 from moviepy.editor import VideoFileClip
+import config
 import os
 
 def crop_centered_to_tiktok(input_path, output_path):
@@ -37,8 +38,9 @@ def crop_centered_to_tiktok(input_path, output_path):
     final_clip.write_videofile(output_path, codec="libx264", fps=clip.fps)
 
 # Exemple d'utilisation
-current_dir = os.path.dirname(os.path.abspath(__file__))
-input_video_path = os.path.join(current_dir, 'tmp', 'video2.mp4')
-output_video_path = os.path.join(current_dir, 'tmp', 'video2_to_tiktok2.mp4')
+if __name__ == '__main__':
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    input_video_path = os.path.join(current_dir, config.INPUT_VIDEO_DIRECTORY, 'video2.mp4')
+    output_video_path = os.path.join(current_dir, config.OUTPUT_VIDEO_DIRECTORY, 'video2_to_tiktok2.mp4')
 
-crop_centered_to_tiktok(input_video_path, output_video_path)
+    crop_centered_to_tiktok(input_video_path, output_video_path)

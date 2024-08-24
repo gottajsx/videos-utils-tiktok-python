@@ -1,6 +1,7 @@
 from moviepy.editor import VideoFileClip
 from moviepy.video.fx.all import resize
 import os
+import config
 
 def convert_to_tiktok_format(input_path, output_path):
     # Charger la vidéo
@@ -38,8 +39,9 @@ def convert_to_tiktok_format(input_path, output_path):
     final_clip.write_videofile(output_path, codec="libx264")
 
 # Exemple d'utilisation
-current_dir = os.path.dirname(os.path.abspath(__file__))
-input_video_path = os.path.join(current_dir, 'tmp', 'video1.mp4')
-output_video_path = os.path.join(current_dir, 'tmp', 'video1_to_tiktok.mp4')
+if __name__ == '__main__':
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    input_video_path = os.path.join(current_dir, config.INPUT_VIDEO_DIRECTORY, 'video1.mp4')
+    output_video_path = os.path.join(current_dir, config.OUTPUT_VIDEO_DIRECTORY, 'video1_to_tiktok.mp4')
 
-convert_to_tiktok_format(input_video_path, output_video_path)
+    convert_to_tiktok_format(input_video_path, output_video_path)
